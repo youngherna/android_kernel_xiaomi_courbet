@@ -87,7 +87,7 @@ CDEFINES +=	-DANI_LITTLE_BYTE_ENDIAN \
 		-DDEBUG
 
 
-ifneq (,$(filter $(TARGET_PRODUCT), davinci davinciin phoenix phoenixin tucana toco tocoin courbet courbetin))
+ifdef CONFIG_ARCH_SDMMAGPIE
 	CDEFINES += -DTFA_NON_DSP_SOLUTION
 endif
 
@@ -114,7 +114,7 @@ KBUILD_EXTRA_SYMBOLS +=$(OUT)/obj/vendor/qcom/opensource/audio-kernel/asoc/codec
 KBUILD_EXTRA_SYMBOLS +=$(OUT)/obj/vendor/qcom/opensource/audio-kernel/soc/Module.symvers
 endif
 
-ifneq (,$(filter $(TARGET_PRODUCT), courbet courbetin))
+ifdef CONFIG_ARCH_SDMMAGPIE
     CDEFINES += -DCONFIG_TARGET_PRODUCT_K9A
 endif
 

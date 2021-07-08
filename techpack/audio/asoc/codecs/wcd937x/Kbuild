@@ -54,7 +54,7 @@ COMMON_INC :=	-I$(AUDIO_ROOT)/$(COMMON_DIR)
 
 ############ WCD937X ############
 
-ifneq (,$(filter $(TARGET_PRODUCT), phoenix phoenixin tucana toco tocoin courbet courbetin sweet sweetin))
+ifdef CONFIG_ARCH_SDMMAGPIE
 	CDEFINES += -DCONFIG_SND_SOC_FOR_ULTRASOUND_PATH
 endif
 
@@ -115,7 +115,7 @@ ifeq ($(CONFIG_SND_SOC_GCOV), y)
 GCOV_PROFILE := y
 endif
 
-ifneq (,$(filter $(TARGET_PRODUCT), courbet courbetin))
+ifdef CONFIG_ARCH_SDMMAGPIE
     CDEFINES += -DCONFIG_TARGET_PRODUCT_K9A
 endif
 

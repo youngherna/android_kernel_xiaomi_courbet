@@ -186,7 +186,7 @@ CDEFINES +=	-DANI_LITTLE_BYTE_ENDIAN \
 		-Werror\
 		-D__linux__
 
-ifneq (,$(filter $(TARGET_PRODUCT), davinci davinciin phoenix phoenixin tucana toco tocoin courbet courbetin))
+ifdef CONFIG_ARCH_SDMMAGPIE
 	CDEFINES += -DCONFIG_SND_SOC_TFA9874_FOR_DAVI
 endif
 
@@ -194,11 +194,11 @@ ifneq (,$(filter $(TARGET_PRODUCT), sweet sweetin))
 	CDEFINES += -DCONFIG_SND_SOC_AWINIC_AW882XX
 endif
 
-ifneq (,$(filter $(TARGET_PRODUCT), courbet courbetin))
+ifdef CONFIG_ARCH_SDMMAGPIE
 	CDEFINES += -DCONFIG_TARGET_PRODUCT_K9A
 endif
 
-ifneq (,$(filter $(TARGET_PRODUCT), phoenix phoenixin tucana toco tocoin courbet courbetin sweet sweetin))
+ifdef CONFIG_ARCH_SDMMAGPIE
 	CDEFINES += -DCONFIG_SND_SOC_FOR_ULTRASOUND_PATH
 endif
 
