@@ -30,8 +30,8 @@ ifeq ($(TARGET_PRODUCT), $(filter $(TARGET_PRODUCT), sweet sweetin))
 $(warning compile aw882xx $(TARGET_PRODUCT))
 include $(MY_LOCAL_PATH)/asoc/codecs/awinic/Android.mk
 else
-ifeq ($(TARGET_PRODUCT), $(filter $(TARGET_PRODUCT), courbet courbetin))
-$(warning compile 9873 $(TARGET_PRODUCT))
+ifeq ($(TARGET_DEVICE), $(filter $(TARGET_DEVICE), courbet courbetin))
+$(warning compile 9873 $(TARGET_DEVICE))
 include $(MY_LOCAL_PATH)/asoc/codecs/tfa9873/Android.mk
 else
 $(warning compile 9874 $(TARGET_PRODUCT))
