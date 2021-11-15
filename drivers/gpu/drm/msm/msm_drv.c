@@ -60,12 +60,9 @@
 #define MSM_VERSION_MINOR	2
 #define MSM_VERSION_PATCHLEVEL	0
 
-<<<<<<< HEAD
 atomic_t resume_pending;
 wait_queue_head_t resume_wait_q;
-=======
 static DEFINE_MUTEX(msm_release_lock);
->>>>>>> 05655e71df183c1e65e26c7fa5b34254357e9563
 
 static void msm_fb_output_poll_changed(struct drm_device *dev)
 {
@@ -1564,7 +1561,11 @@ static int msm_release(struct inode *inode, struct file *filp)
 	* refcount > 1. This operation is not triggered from upstream
 	* drm as msm_driver does not support DRIVER_LEGACY feature.
 	*/
-	return drm_release(inode, filp);
+	ret = drm_release(inode, filp);
+	filp->private_data = NULL;
+end:
+	mutex_unlock(&msm_release_lock);
+	return ret;
 }
 
 /**
