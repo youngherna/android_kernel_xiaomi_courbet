@@ -1145,7 +1145,6 @@ static int a6xx_gmu_load_firmware(struct kgsl_device *device)
 }
 
 #define A6XX_VBIF_XIN_HALT_CTRL1_ACKS   (BIT(0) | BIT(1) | BIT(2) | BIT(3))
-
 static void do_gbif_halt(struct kgsl_device *device, u32 reg, u32 ack_reg,
 	u32 mask, const char *client)
 {
@@ -1179,6 +1178,7 @@ static void do_gbif_halt(struct kgsl_device *device, u32 reg, u32 ack_reg,
 
 	dev_err(device->dev, "%s GBIF halt timed out\n", client);
 }
+
 static void a6xx_llm_glm_handshake(struct kgsl_device *device)
 {
 	unsigned int val;
@@ -1252,7 +1252,11 @@ static int a6xx_gmu_suspend(struct kgsl_device *device)
 			do_gbif_halt(device, A6XX_RBBM_GBIF_HALT,
 				A6XX_RBBM_GBIF_HALT_ACK,
 				gpudev->gbif_gx_halt_mask,
+<<<<<<< HEAD
 			"GX");
+=======
+				"GX");
+>>>>>>> 05655e71df183c1e65e26c7fa5b34254357e9563
 		/* Halt CX traffic */
 		do_gbif_halt(device, A6XX_GBIF_HALT, A6XX_GBIF_HALT_ACK,
 			gpudev->gbif_arb_halt_mask, "CX");
@@ -1264,7 +1268,11 @@ static int a6xx_gmu_suspend(struct kgsl_device *device)
 	/* Allow the software reset to complete */
 	udelay(100);
 
+<<<<<<< HEAD
 /*
+=======
+	/*
+>>>>>>> 05655e71df183c1e65e26c7fa5b34254357e9563
 	 * This is based on the assumption that GMU is the only one controlling
 	 * the GX HS. This code path is the only client voting for GX through
 	 * the regulator interface.

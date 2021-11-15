@@ -133,6 +133,7 @@ struct dsi_backlight_config {
 	bool xiaomi_f4_36_flag;
 	bool xiaomi_f4_41_flag;
 	bool xiaomi_k9a_36_flag;
+	bool bl_inverted_dbv;
 
 	int en_gpio;
 	bool bl_remap_flag;
